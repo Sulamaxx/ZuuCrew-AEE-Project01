@@ -1,0 +1,38 @@
+# Operation Ledger-Mind: Global Configuration
+
+# LLM Settings
+llm_provider: "gemini"
+llm_model: "gemini-2.5-flash"
+
+# Fine-tuning Settings (Part 2)
+base_model: "meta-llama/Meta-Llama-3-8B-Instruct"
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+learning_rate: 2e-5
+temperature: 0.2
+max_tokens: 4096
+max_steps: 100
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 64
+
+# Embedding Settings
+text_emb_provider: "sbert"
+text_emb_model: "sentence-transformers/all-MiniLM-L6-v2"
+normalize_embeddings: true
+
+# RAG Settings (Part 3)
+weaviate_url: "http://localhost:8080" # Or cloud URL
+hybrid_search_alpha: 0.5 # Balance between vector (1.0) and keyword (0.0)
+similarity_top_k: 5
+rerank_top_n: 3
+
+# Chunking Settings (Part 1 Requirement)
+chunk_size: 1500
+chunk_overlap: 200
+
+# Paths
+artifacts_root: "./artifacts"
+data_root: "./data"
+train_data_path: "./artifacts/train_data"
+pdf_path: "./data/pdfs/2024-Annual-Report.pdf"

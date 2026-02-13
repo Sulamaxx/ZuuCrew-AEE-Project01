@@ -1,0 +1,27 @@
+# Part 1: Data Factory
+pypdf
+langchain-google-genai
+python-dotenv
+pyyaml
+tqdm
+
+# Part 2: Fine-tuning
+transformers>=4.40.0
+peft
+trl
+bitsandbytes
+datasets
+accelerate
+torch
+tensorboard
+
+# Part 3: Advanced RAG
+weaviate-client
+langchain-weaviate
+sentence-transformers
+
+# Part 4: Evaluation
+rouge_score
+pandas
+matplotlib
+seaborn
