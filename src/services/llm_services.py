@@ -41,7 +41,7 @@ def get_llm(config: Dict[str, Any]):
         
     raise ValueError(f"Provider {provider} not implemented for Project 01 Factory")
 
-def get_embeddings(config: Dict[str, Any]):
+def get_text_embeddings(config: Dict[str, Any]):
     provider = config["text_emb_provider"]
     if provider == "sbert":
         from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -51,3 +51,23 @@ def get_embeddings(config: Dict[str, Any]):
             encode_kwargs={"normalize_embeddings": config.get("normalize_embeddings", True)}
         )
     raise ValueError(f"Embedding provider {provider} not implemented")
+
+def validate_api_keys(config: Dict[str, Any], verbose: bool = True):
+    import warnings
+    api_keys = {
+        "GOOGLE_API_KEY": os.getenv("GOOGLE_API_KEY"),
+        "WEAVIATE_API_KEY": os.getenv("WEAVIATE_API_KEY"),
+    }
+    availability = {}
+    for key, value in api_keys.items():
+        availability[key] = value is not None
+        if verbose and not value:
+            warnings.warn(f"⚠️  {key} not found in environment")
+    return availability
+
+def print_config_summary(config: Dict[str, Any]):
+    print("✅ Config loaded:")
+    print(f"  LLM: {config['llm_provider']} / {config.get('llm_model')}")
+    print(f"  Embeddings: {config['text_emb_provider']} / {config['text_emb_model']}")
+    print(f"  Temperature: {config.get('temperature')}")
+    print(f"  Artifacts: {config.get('artifacts_root')}")
