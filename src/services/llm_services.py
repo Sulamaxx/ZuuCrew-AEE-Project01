@@ -71,3 +71,6 @@ def print_config_summary(config: Dict[str, Any]):
     print(f"  Embeddings: {config['text_emb_provider']} / {config['text_emb_model']}")
     print(f"  Temperature: {config.get('temperature')}")
     print(f"  Artifacts: {config.get('artifacts_root')}")
+
+# Legacy alias for backward compatibility with older notebook versions
+get_embeddings = get_text_embeddings
