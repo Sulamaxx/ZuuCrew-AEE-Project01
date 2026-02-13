@@ -5,6 +5,7 @@ llm_provider: "gemini"
 llm_model: "gemini-2.5-flash"
 
 # Fine-tuning Settings (Part 2)
+# base_model: "meta-llama/Meta-Llama-3-8B-Instruct"
 base_model: "Qwen/Qwen2.5-1.5B-Instruct"
 lora_r: 16
 lora_alpha: 32
