@@ -6,7 +6,7 @@ pyyaml
 tqdm
 
 # Part 2: Fine-tuning (Pinned to Lecturer Workshop Versions)
-numpy==1.26.4
+numpy>=1.26.4,<2.0
 transformers==4.44.2
 datasets==2.20.0
 accelerate==0.34.2
